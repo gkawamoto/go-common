@@ -29,6 +29,21 @@ func WriteFile(location string, data []byte) error {
 	return ioutil.WriteFile(location, data, mode)
 }
 
+// WriteTempFile writes the contents to a temporary file and returns the path.
+func WriteTempFile(data []byte) (string, error) {
+	var f *os.File
+	var err error
+	f, err = ioutil.TempFile("", "")
+	if err != nil {
+		return f.Name(), err
+	}
+	err = ioutil.WriteFile(f.Name(), data, 0777)
+	if err != nil {
+		return f.Name(), err
+	}
+	return f.Name(), nil
+}
+
 // ReadFile reads the specified file (specified in this package to keep company to the WriteFile method).
 func ReadFile(location string) ([]byte, error) {
 	return ioutil.ReadFile(location)
