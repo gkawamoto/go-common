@@ -1,5 +1,35 @@
 package commonslice
 
+// RemoveDuplicateString receives a slice of strings and returns without the duplicate ones.
+func RemoveDuplicateString(elements []string) []string {
+	var encountered = map[string]bool{}
+	var index int
+	var key string
+	for index = range elements {
+		encountered[elements[index]] = true
+	}
+	var result = []string{}
+	for key = range encountered {
+		result = append(result, key)
+	}
+	return result
+}
+
+// RemoveDuplicateBool receives a slice of bools and returns without the duplicate ones.
+func RemoveDuplicateBool(elements []bool) []bool {
+	var encountered = map[bool]bool{}
+	var index int
+	var key bool
+	for index = range elements {
+		encountered[elements[index]] = true
+	}
+	var result = []bool{}
+	for key = range encountered {
+		result = append(result, key)
+	}
+	return result
+}
+
 // RemoveDuplicateByte receives a slice of bytes and returns without the duplicate ones.
 func RemoveDuplicateByte(elements []byte) []byte {
 	var encountered = map[byte]bool{}
